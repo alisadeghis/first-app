@@ -38,3 +38,6 @@
   margin: 0px;
   box-sizing: border-box;
 }
+body {
+    @apply tw-bg-blue-50
+}
