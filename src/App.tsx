@@ -1,8 +1,8 @@
-import { initI18n } from "@/plugin";
+import { registerI18n } from "@/plugin";
 import AppRoutes from "./route";
 
 const App = () => {
-  initI18n();
+  registerI18n();
 
   return <AppRoutes />;
 };

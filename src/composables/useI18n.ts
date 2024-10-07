@@ -1,9 +1,10 @@
+import { I18nKeyDTO } from "@/plugin/i18n/type";
 import { useTranslation } from "react-i18next";
 
-export const useI18n = <T>() => {
+export const useI18n = () => {
   const { t } = useTranslation();
 
-  const i18nT = (key: T) => {
+  const i18nT = (key: I18nKeyDTO) => {
     return t(key as string);
   };
 

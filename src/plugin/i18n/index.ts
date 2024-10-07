@@ -1,11 +1,11 @@
-import enLocale from "@/locale/en.json";
-import faLocale from "@/locale/fa.json";
+import enLocale from "@/locale/en";
+import faLocale from "@/locale/fa";
 import i18n from "i18next";
 import { initReactI18next, useTranslation } from "react-i18next";
 
 export const i18nObject = i18n.use(initReactI18next);
 
-export const initI18n = () => {
+export const registerI18n = () => {
   i18nObject.init({
     fallbackLng: "en",
     // debug: process.env.NODE_ENV === "development",

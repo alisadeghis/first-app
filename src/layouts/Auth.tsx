@@ -15,12 +15,10 @@ export const AuthLayout = ({ children }: PropsWithChildren) => {
     <div>
       <div className="tw-flex tw-w-9/12 tw-min-h-[400px] tw-mx-auto tw-bg-white tw-shadow-2xl tw-mt-20 tw-rounded-lg tw-overflow-hidden">
         <div className="tw-w-6/12">
-          <div className="tw-w-full tw-h-full tw-p-5">
-            {children}
-          </div>
+          <div className="tw-w-full tw-h-full tw-p-5">{children}</div>
         </div>
-        <div className="tw-w-6/12">
-          <div className="tw-w-full tw-h-full tw-bg-blue-100 tw-px-7 tw-py-10">
+        <div className="tw-w-6/12 tw-bg-blue-100">
+          <div className="tw-w-10/12 tw-mx-auto tw-h-full tw-px-7 tw-py-10">
             <div className="tw-flex tw-justify-end">
               <img
                 src={moon_cloud_rain}
