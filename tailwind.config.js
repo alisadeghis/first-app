@@ -7,7 +7,9 @@ export default {
   prefix: 'tw-',
   theme: {
     extend: {
-      
+      container: {
+        center: true
+      }
     },
   },
   plugins: [],
