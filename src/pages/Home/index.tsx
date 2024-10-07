@@ -1,9 +1,3 @@
-import { useI18n } from "@/composables";
-import { I18nKeyDTO } from "@/plugin/i18n/type";
-import { Settings } from "@mui/icons-material";
-import { Autocomplete, IconButton, TextField } from "@mui/material";
-import logo from "@/assets/img/logo.png";
-
 export const HomePage = () => {
   //   const { i18nT } = useI18n<I18nKeyDTO>();
 

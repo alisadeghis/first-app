@@ -29,7 +29,7 @@ const AppRoutes = () => {
           element={
             <AuthLayout>
               <Routes>
-                <Route path="/auth" element={<Navigate to="login" />} />
+                <Route path="/" element={<Navigate to="login" />} />
                 <Route path="login" element={<LoginPage />} />
               </Routes>
             </AuthLayout>
