@@ -1,6 +1,7 @@
 import { cities } from "@/assets/cities";
 import logo from "@/assets/img/logo.png";
 import { useI18n } from "@/composables";
+import { useSetting } from "@/provider/SettingProvider";
 import { AccountBoxOutlined, SettingsOutlined } from "@mui/icons-material";
 import { Autocomplete, IconButton, TextField } from "@mui/material";
 import { PropsWithChildren } from "react";
@@ -8,6 +9,7 @@ import { Link } from "react-router-dom";
 
 export const DefaultLayout = ({ children }: PropsWithChildren) => {
   const { i18nT } = useI18n();
+  const { city } = useSetting();
 
   return (
     <>
@@ -26,8 +28,9 @@ export const DefaultLayout = ({ children }: PropsWithChildren) => {
                 style={{
                   width: "250px",
                 }}
-                options={cities}
-                getOptionLabel={(option) => option.city}
+                options={cities.map((i) => i.city)}
+                value={city.value}
+                onChange={(_, v) => city.set(v ?? "")}
                 renderInput={(params) => (
                   <TextField
                     {...params}

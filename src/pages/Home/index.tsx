@@ -1,12 +1,15 @@
 import { useApi } from "@/composables/useApi";
 import { homeServices } from "./services";
 import { useEffect } from "react";
+import { useSetting } from "@/provider/SettingProvider";
 
 export const HomePage = () => {
-  const { data, error, execute, loading } = useApi(homeServices.getWeather);
+  const { data, execute, loading } = useApi(homeServices.getWeather);
+  const { city } = useSetting()
+  
   useEffect(() => {
-    execute("tehran");
-  }, []);
+    execute(city.value);
+  }, [city.value]);
   return (
     <>
       {loading ? (
