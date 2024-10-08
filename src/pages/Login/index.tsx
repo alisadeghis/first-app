@@ -2,12 +2,15 @@ import { useI18n } from "@/composables";
 import { useAuth } from "@/provider/AuthProvider";
 import { Button, TextField } from "@mui/material";
 import { FormEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const LoginPage = () => {
   const [{ email }, setUserData] = useState<{ email: string }>({
     email: '',
   });
   const { login } = useAuth()
+  const navigate = useNavigate();
+  
   const onSubmit = async (event: FormEvent<HTMLElement>) => {
     event.preventDefault();
     if (await login(email)) {
