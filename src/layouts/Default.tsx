@@ -1,13 +1,13 @@
+import { cities } from "@/assets/cities";
 import logo from "@/assets/img/logo.png";
 import { useI18n } from "@/composables";
-import { I18nKeyDTO } from "@/plugin/i18n/type";
 import { AccountBoxOutlined, SettingsOutlined } from "@mui/icons-material";
 import { Autocomplete, IconButton, TextField } from "@mui/material";
 import { PropsWithChildren } from "react";
 import { Link } from "react-router-dom";
 
 export const DefaultLayout = ({ children }: PropsWithChildren) => {
-  const { i18nT } = useI18n<I18nKeyDTO>();
+  const { i18nT } = useI18n();
 
   return (
     <>
@@ -26,7 +26,8 @@ export const DefaultLayout = ({ children }: PropsWithChildren) => {
                 style={{
                   width: "250px",
                 }}
-                options={[]}
+                options={cities}
+                getOptionLabel={(option) => option.city}
                 renderInput={(params) => (
                   <TextField
                     {...params}

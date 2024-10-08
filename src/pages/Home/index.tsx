@@ -1,20 +1,31 @@
-export const HomePage = () => {
-  //   const { i18nT } = useI18n<I18nKeyDTO>();
+import { useApi } from "@/composables/useApi";
+import { homeServices } from "./services";
+import { useEffect } from "react";
 
+export const HomePage = () => {
+  const { data, error, execute, loading } = useApi(homeServices.getWeather);
+  useEffect(() => {
+    execute("tehran");
+  }, []);
   return (
     <>
-      <div className="tw-flex tw-items-center tw-flex-wrap -tw-m-5">
-        <div className="tw-w-6/12 tw-p-5">
-          <div className="tw-bg-slate-200 tw-shadow-2xl tw-p-5 tw-rounded-3xl tw-min-h-48">
-            hi
+      {loading ? (
+        <>...loading</>
+      ) : (
+        <div className="tw-flex tw-items-center tw-flex-wrap -tw-m-5">
+          <div>{JSON.stringify(data)}</div>
+          <div className="tw-w-6/12 tw-p-5">
+            <div className="tw-bg-slate-200 tw-shadow-2xl tw-p-5 tw-rounded-3xl tw-min-h-48">
+              hi
+            </div>
+          </div>
+          <div className="tw-w-6/12 tw-p-5">
+            <div className="tw-bg-slate-200 tw-shadow-2xl tw-p-5 tw-rounded-3xl tw-min-h-48">
+              hi
+            </div>
           </div>
         </div>
-        <div className="tw-w-6/12 tw-p-5">
-          <div className="tw-bg-slate-200 tw-shadow-2xl tw-p-5 tw-rounded-3xl tw-min-h-48">
-            hi
-          </div>
-        </div>
-      </div>
+      )}
     </>
   );
 };
