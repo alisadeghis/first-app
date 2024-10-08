@@ -1,13 +1,13 @@
-import { useAuth } from '@/provider/AuthProvider';
-import React from 'react';
-import { Navigate, Outlet } from 'react-router-dom';
+import { useAuth } from "@/provider/AuthProvider";
+import { PropsWithChildren } from "react";
+import { Navigate } from "react-router-dom";
 
-export const ProtectedRoute: React.FC = () => {
+export const ProtectedRoute = ({ children }: PropsWithChildren) => {
   const { user, loading } = useAuth();
 
   if (loading) {
     return <div>Loading...</div>;
   }
 
-  return user ? <Outlet /> : <Navigate to="/auth/login" />;
+  return user ? children : <Navigate to="/auth/login" />;
 };
