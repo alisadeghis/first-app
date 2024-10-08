@@ -1,15 +1,20 @@
 import { useI18n } from "@/composables";
+import { useAuth } from "@/provider/AuthProvider";
 import { Button, TextField } from "@mui/material";
 import { FormEvent, useState } from "react";
 
 export const LoginPage = () => {
-  const [{ email }, setUserData] = useState<{ email: string | undefined }>({
-    email: undefined,
+  const [{ email }, setUserData] = useState<{ email: string }>({
+    email: '',
   });
-
-  const onSubmit = (event: FormEvent<HTMLElement>) => {
+  const { login } = useAuth()
+  const onSubmit = async (event: FormEvent<HTMLElement>) => {
     event.preventDefault();
-    console.log(email);
+    if (await login(email)) {
+      navigate("/");
+    } else {
+      alert("Login failed Broo !. Use mmd@email.com or ali@email.com");
+    }
   };
   const { i18nT } = useI18n();
   return (
