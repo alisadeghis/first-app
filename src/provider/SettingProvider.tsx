@@ -1,10 +1,16 @@
 import i18next from "i18next";
-import { createContext, PropsWithChildren, useContext, useState } from "react";
+import {
+  createContext,
+  PropsWithChildren,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 export interface SettingContextType {
   lang: {
     value: "fa" | "en";
-    set: typeof i18next.changeLanguage;
+    set: (lang: "fa" | "en") => void;
   };
   mode: {
     value: "dark" | "light";
@@ -19,10 +25,18 @@ export interface SettingContextType {
 const SettingContext = createContext<SettingContextType | null>(null);
 
 export const SettingProvider = ({ children }: PropsWithChildren) => {
-  const [mode, setMode] = useState<"dark" | "light">("light");
+  const [mode, setMode] = useState<"dark" | "light">("dark");
   const [city, setCity] = useState<string>("tehran");
   const lang = i18next.language as "fa" | "en";
-  const setLang = i18next.changeLanguage;
+
+  const changeMode = (mode: 'light' | 'dark') => {
+    setMode(mode)
+    localStorage.setItem('mode', mode)
+  }
+  const changeLang = (lang: "fa" | "en") => {
+    i18next.changeLanguage(lang)
+    localStorage.setItem('lang', lang)
+  }
 
   return (
     <SettingContext.Provider
@@ -33,11 +47,11 @@ export const SettingProvider = ({ children }: PropsWithChildren) => {
         },
         lang: {
           value: lang,
-          set: setLang,
+          set: changeLang,
         },
         mode: {
           value: mode,
-          set: setMode,
+          set: changeMode,
         },
       }}
     >

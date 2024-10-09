@@ -1,7 +1,6 @@
 import { DefaultLayout } from "@/layouts";
 import { AuthLayout } from "@/layouts/Auth";
 import { HomePage, LoginPage, ProfilePage } from "@/pages";
-import { AuthProvider } from "@/provider/AuthProvider";
 import {
   Navigate,
   Route,
@@ -12,7 +11,6 @@ import { ProtectedRoute } from "./ProtectedRoute";
 
 const AppRoutes = () => {
   return (
-    <AuthProvider>
       <Router>
         <Routes>
           <Route
@@ -42,7 +40,6 @@ const AppRoutes = () => {
           />
         </Routes>
       </Router>
-    </AuthProvider>
   );
 };
 

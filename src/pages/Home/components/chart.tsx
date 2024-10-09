@@ -9,11 +9,9 @@ import {
 } from "recharts";
 
 export type DataDTO = {
-    name: string,
-    temp: number
-}[] 
-
-
+  name: string;
+  temp: number;
+}[];
 
 export const TemperatureChart = ({ data }: { data: DataDTO }) => {
   return (
@@ -29,23 +27,34 @@ export const TemperatureChart = ({ data }: { data: DataDTO }) => {
             <stop offset="95%" stopColor="#4CDFE8" stopOpacity={1} />
           </linearGradient>
         </defs>
-        <CartesianGrid strokeDasharray="3 3" vertical={false} />
+        <CartesianGrid 
+        strokeDasharray="3 3" 
+        stroke={'var(--theme-surface-400)'}
+        vertical={false} />
         <XAxis
           dataKey="name"
           tickMargin={15}
           tickLine={false}
           axisLine={false}
+          stroke={'var(--theme-surface-800)'}
         />
         <YAxis
-            domain={['auto', 'auto']}
+          domain={["auto", "auto"]}
           axisLine={false}
           tickMargin={15}
+          stroke={'var(--theme-surface-800)'}
           tickLine={false}
           unit="°c"
         />
 
         <Tooltip />
-        <Area fill="url(#colorUv)" type="monotone" dataKey="temp" stroke="url(#colorPv)" strokeWidth={2} />
+        <Area
+          fill="url(#colorUv)"
+          type="monotone"
+          dataKey="temp"
+          stroke="url(#colorPv)"
+          strokeWidth={2}
+        />
       </AreaChart>
     </ResponsiveContainer>
   );

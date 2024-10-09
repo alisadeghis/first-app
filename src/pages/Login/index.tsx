@@ -22,7 +22,7 @@ export const LoginPage = () => {
   const { i18nT } = useI18n();
   return (
     <form onSubmit={onSubmit}>
-      <div className="tw-flex tw-flex-col tw-items-center">
+      <div className="tw-flex tw-text-surface-800 tw-flex-col tw-items-center">
         <h3 className="tw-font-bold tw-mt-20 tw-text-xl">{i18nT("LOGIN")}</h3>
         <div className="tw-mt-10 tw-w-full tw-px-10">
           <TextField
