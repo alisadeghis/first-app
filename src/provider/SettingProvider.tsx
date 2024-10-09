@@ -56,7 +56,6 @@ export const SettingProvider = ({ children }: PropsWithChildren) => {
         },
       }}
     >
-      {lang}
       {children}
     </SettingContext.Provider>
   );

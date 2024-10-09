@@ -2,18 +2,15 @@ import { cities } from "@/assets/cities";
 import logo from "@/assets/img/logo.png";
 import { useI18n } from "@/composables";
 import { useSetting } from "@/provider/SettingProvider";
-import { AccountBoxOutlined, DarkMode, Light, SettingsOutlined, WbSunny } from "@mui/icons-material";
+import { AccountBoxOutlined, DarkMode, SettingsOutlined, WbSunny } from "@mui/icons-material";
 import {
   Autocomplete,
-  Button,
-  ButtonGroup,
   Divider,
   IconButton,
   Menu,
-  MenuItem,
   TextField,
   ToggleButton,
-  ToggleButtonGroup,
+  ToggleButtonGroup
 } from "@mui/material";
 import { PropsWithChildren, useState } from "react";
 import { Link } from "react-router-dom";
