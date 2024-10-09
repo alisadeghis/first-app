@@ -7,6 +7,7 @@ import {
   Autocomplete,
   Button,
   ButtonGroup,
+  Divider,
   IconButton,
   Menu,
   MenuItem,
@@ -19,13 +20,15 @@ import { Link } from "react-router-dom";
 
 export const DefaultLayout = ({ children }: PropsWithChildren) => {
   const { i18nT } = useI18n();
-  const { city, mode } = useSetting();
+  const { city, mode, lang } = useSetting();
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
+
+  
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -76,7 +79,7 @@ export const DefaultLayout = ({ children }: PropsWithChildren) => {
                   "aria-labelledby": "basic-button",
                 }}
               >
-                <div className="tw-flex tw-flex-col tw-min-w-[200px] tw-p-3">
+                <div className="tw-flex tw-space-y-3 tw-flex-col tw-min-w-[200px] tw-p-3">
                   <div className="">
                     <h6>Mode</h6>
                     <ToggleButtonGroup value={mode.value} fullWidth size="small">
@@ -87,6 +90,18 @@ export const DefaultLayout = ({ children }: PropsWithChildren) => {
                       <ToggleButton onClick={() => mode.set('dark')} value={'dark'}>
                         <DarkMode/>
                         Dark
+                      </ToggleButton>
+                    </ToggleButtonGroup>
+                  </div>
+                  <Divider  />
+                  <div className="">
+                    <h6>Lang</h6>
+                    <ToggleButtonGroup value={lang.value} fullWidth size="small">
+                      <ToggleButton onClick={() => lang.set('fa')} value={'fa'}>
+                        Fa
+                      </ToggleButton>
+                      <ToggleButton onClick={() => lang.set('en')} value={'en'}>
+                        En
                       </ToggleButton>
                     </ToggleButtonGroup>
                   </div>

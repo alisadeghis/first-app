@@ -27,13 +27,14 @@ const SettingContext = createContext<SettingContextType | null>(null);
 export const SettingProvider = ({ children }: PropsWithChildren) => {
   const [mode, setMode] = useState<"dark" | "light">("dark");
   const [city, setCity] = useState<string>("tehran");
-  const lang = i18next.language as "fa" | "en";
+  const [lang, setlang] = useState(i18next.language as "fa" | "en");
 
   const changeMode = (mode: 'light' | 'dark') => {
     setMode(mode)
     localStorage.setItem('mode', mode)
   }
   const changeLang = (lang: "fa" | "en") => {
+    setlang(lang)
     i18next.changeLanguage(lang)
     localStorage.setItem('lang', lang)
   }
@@ -55,6 +56,7 @@ export const SettingProvider = ({ children }: PropsWithChildren) => {
         },
       }}
     >
+      {lang}
       {children}
     </SettingContext.Provider>
   );
