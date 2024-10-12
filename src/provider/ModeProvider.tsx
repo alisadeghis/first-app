@@ -38,12 +38,11 @@ export const ModeProvider = ({ children }: PropsWithChildren) => {
     setMuitheme(
       registerThemeMui(mode.value, lang.value === "en" ? "ltr" : "rtl")
     );
-  }, [lang.value]);
+  }, [lang.value, mode.value]);
 
   return (
     <CacheProvider value={lang.value === "fa" ? cacheRtl : cacheLtr}>
       <ThemeProvider theme={muitheme}>
-        <CssBaseline />
         <ModeContext.Provider value={null}>{children}</ModeContext.Provider>
       </ThemeProvider>
     </CacheProvider>
