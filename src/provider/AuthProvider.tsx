@@ -7,14 +7,13 @@ import React, {
 } from "react";
 
 export interface User {
-  id: string;
-  email: string;
+  id: number;
   name: string;
 }
 
 export interface AuthContextType {
   user: User | null;
-  login: (email: string) => Promise<boolean>;
+  login: (name: string) => Promise<boolean>;
   logout: () => void;
   loading: boolean;
 }
@@ -25,34 +24,36 @@ interface AuthProviderProps {
   children: ReactNode;
 }
 
-const MOCK_USERS: User[] = [
-  { id: "1", email: "mmd@email.com", name: "mmd" },
-  { id: "2", email: "ali@email.com", name: "ali" },
-];
+const MOCK_USERS: User[] = [];
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
+    const storedUser = localStorage.getItem("user");    
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
     setLoading(false);
   }, []);
 
-  const login = async (email: string): Promise<boolean> => {
+  const login = async (name: string): Promise<boolean> => {
     await new Promise((resolve) => setTimeout(resolve, 500));
 
-    const foundUser = MOCK_USERS.find((u) => u.email === email);
+    const foundUser = MOCK_USERS.find((u) => u.name === name);
 
     if (foundUser) {
       setUser(foundUser);
       localStorage.setItem("user", JSON.stringify(foundUser));
       return true;
+    } else {
+      const newUser = { id: MOCK_USERS.length + 1, name };
+      setUser(newUser);
+      MOCK_USERS.push(newUser);
+      localStorage.setItem("user", JSON.stringify(newUser));
+      return true;
     }
-    return false;
   };
 
   const logout = () => {

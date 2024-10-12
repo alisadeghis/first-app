@@ -4,12 +4,11 @@ import { PropsWithChildren } from "react";
 import moon_cloud_rain from "@/assets/img/moon-cloud-rain.png";
 import moon_cloud_wind from "@/assets/img/moon-cloud-wind.png";
 import sun_cloud_rain from "@/assets/img/sun-cloud-rain.png";
+import { useSetting } from "@/provider/SettingProvider";
 
 export const AuthLayout = ({ children }: PropsWithChildren) => {
-  const options = [
-    { label: "fa", value: "fa" },
-    { label: "en", value: "en" },
-  ];
+  const { lang } = useSetting();
+  const options = ["fa", "en"];
 
   return (
     <div>
@@ -52,6 +51,9 @@ export const AuthLayout = ({ children }: PropsWithChildren) => {
       <div className="tw-flex tw-mt-5 tw-items-center tw-justify-center">
         <Autocomplete
           options={options}
+          value={lang.value}
+          clearIcon={false}
+          onChange={(_, v) => lang.set(v as "fa" | "en")}
           renderInput={(params) => (
             <TextField
               {...params}

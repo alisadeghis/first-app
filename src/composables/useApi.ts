@@ -24,6 +24,7 @@ export function useApi<T, Args extends any[]>(
         setLoading(true);
         const result = await apiFunc(...args);
         setData(result.data);
+        setError(null)
         return result.data;
       } catch (err) {
         setError(

@@ -41,5 +41,5 @@
 }
 
 body {
-  @apply tw-bg-surface-50
+  @apply tw-bg-surface-50 tw-min-h-screen
 }

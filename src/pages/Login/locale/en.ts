@@ -1,5 +1,5 @@
 export default {
   LOGIN: "Login",
-  EMAIL_INPUT: "Enter Your Email",
+  NAME_INPUT: "Enter Your Name",
   LANGUAGE: "Language",
 };

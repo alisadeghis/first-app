@@ -33,6 +33,10 @@ export const SettingProvider = ({ children }: PropsWithChildren) => {
     setMode(mode)
     localStorage.setItem('mode', mode)
   }
+  const changeCity = (city: string) => {
+    setCity(city)
+    localStorage.setItem('city', city)
+  }
   const changeLang = (lang: "fa" | "en") => {
     setlang(lang)
     i18next.changeLanguage(lang)
@@ -49,7 +53,7 @@ export const SettingProvider = ({ children }: PropsWithChildren) => {
       value={{
         city: {
           value: city,
-          set: setCity,
+          set: changeCity,
         },
         lang: {
           value: lang,

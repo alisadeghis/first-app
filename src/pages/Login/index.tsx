@@ -5,18 +5,17 @@ import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const LoginPage = () => {
-  const [{ email }, setUserData] = useState<{ email: string }>({
-    email: '',
+  const [{ name }, setUserData] = useState<{ name: string }>({
+    name: '',
   });
   const { login } = useAuth()
   const navigate = useNavigate();
   
   const onSubmit = async (event: FormEvent<HTMLElement>) => {
     event.preventDefault();
-    if (await login(email)) {
+    if (await login(name)) {
+      alert('welcome')
       navigate("/");
-    } else {
-      alert("Login failed Broo !. Use mmd@email.com or ali@email.com");
     }
   };
   const { i18nT } = useI18n();
@@ -26,15 +25,15 @@ export const LoginPage = () => {
         <h3 className="tw-font-bold tw-mt-20 tw-text-xl">{i18nT("LOGIN")}</h3>
         <div className="tw-mt-10 tw-w-full tw-px-10">
           <TextField
-            defaultValue={email}
-            onChange={(e) => setUserData({ email: e.target.value })}
+            defaultValue={name}
+            onChange={(e) => setUserData({ name: e.target.value })}
             size="small"
             fullWidth
-            label={i18nT("EMAIL_INPUT")}
+            label={i18nT("NAME_INPUT")}
           />
           <div className="tw-mt-36">
             <Button type="submit" variant="contained" fullWidth>
-              Login
+              {i18nT('LOGIN')}
             </Button>
           </div>
         </div>

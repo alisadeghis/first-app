@@ -1,11 +1,10 @@
-import { ThemeProvider, CacheProvider } from "@emotion/react";
-import { createContext, PropsWithChildren, useEffect, useState } from "react";
-import { useSetting } from "./SettingProvider";
 import { registerTheme, registerThemeMui } from "@/plugin/theme";
-import { CssBaseline } from "@mui/material";
 import createCache from "@emotion/cache";
+import { CacheProvider, ThemeProvider } from "@emotion/react";
+import { createContext, PropsWithChildren, useEffect, useState } from "react";
 import { prefixer } from "stylis";
 import rtlPlugin from "stylis-plugin-rtl";
+import { useSetting } from "./SettingProvider";
 
 const ModeContext = createContext(null);
 
@@ -19,7 +18,7 @@ const cacheLtr = createCache({
 });
 
 export const ModeProvider = ({ children }: PropsWithChildren) => {
-  const { mode, lang } = useSetting();
+  const { mode, lang, city } = useSetting();
   const [muitheme, setMuitheme] = useState(
     registerThemeMui(mode.value, lang.value === "en" ? "ltr" : "rtl")
   );
@@ -30,6 +29,10 @@ export const ModeProvider = ({ children }: PropsWithChildren) => {
       | "dark"
       | undefined;
     mode.set(modeLocalStorage ?? mode.value);
+
+    
+    const cityLocalStorage = localStorage.getItem("city") as string
+    city.set(cityLocalStorage ?? city.value);
   }, []);
   useEffect(() => {
     registerTheme(mode.value);

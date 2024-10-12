@@ -1,5 +1,5 @@
 export default {
   LOGIN: "ورود",
-  EMAIL_INPUT: "ایمیل خود را وارد کنید",
+  NAME_INPUT: "نام خود را وارد کنید",
   LANGUAGE: "زبان",
 };

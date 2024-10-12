@@ -235,7 +235,7 @@ export const registerTheme = (mode: "light" | "dark") => {
 
 export const registerThemeMui = (mode: "light" | "dark", dir: 'rtl' | 'ltr') => {
   return createTheme({
-    direction: 'rtl',
+    direction: dir,
     palette: {
       mode,
       primary: {
