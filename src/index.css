@@ -26,11 +26,11 @@
 
 @supports (font-variation-settings: normal) {
   * {
-    /* font-family: "iransansxv", tahoma, serif !important; */
+    font-family: "iransansxv", tahoma, serif !important;
   }
 }
 * {
-  font-family: iransansx, tahoma, serif;
+  font-family: iransansx, tahoma, serif !important;
   /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
   /* -moz-font-feature-settings: "ss03" !important; */
   /* -webkit-font-feature-settings: "ss03" !important; */

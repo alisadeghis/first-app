@@ -233,8 +233,9 @@ export const registerTheme = (mode: "light" | "dark") => {
   document.head.appendChild(styleTag);
 };
 
-export const registerThemeMui = (mode: "light" | "dark") => {
+export const registerThemeMui = (mode: "light" | "dark", dir: 'rtl' | 'ltr') => {
   return createTheme({
+    direction: 'rtl',
     palette: {
       mode,
       primary: {

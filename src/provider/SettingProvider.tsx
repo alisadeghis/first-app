@@ -39,6 +39,11 @@ export const SettingProvider = ({ children }: PropsWithChildren) => {
     localStorage.setItem('lang', lang)
   }
 
+  useEffect(() => {
+    document.documentElement.dir = lang === 'fa' ? 'rtl' : 'ltr'
+  }, [lang])
+
+
   return (
     <SettingContext.Provider
       value={{
