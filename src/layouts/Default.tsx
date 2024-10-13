@@ -42,7 +42,7 @@ export const DefaultLayout = ({ children }: PropsWithChildren) => {
     <div className="tw-flex tw-flex-col tw-h-full tw-min-h-screen">
       <header className="tw-bg-surface-50 tw-text-surface-800 tw-shadow-lg tw-py-3">
         <div className="tw-container">
-          <div className="tw-flex tw-items-center tw-justify-between">
+          <div className="tw-flex tw-items-center tw-flex-wrap tw-justify-between">
             <div className="tw-flex tw-items-center tw-gap-x-3">
               <Link to="/">
                 <img src={logo} alt="" />
@@ -140,7 +140,7 @@ export const DefaultLayout = ({ children }: PropsWithChildren) => {
       </main>
       <footer className="tw-bg-surface-50 tw-py-5 tw-shadow-2xl tw-mt-2 tw-text-surface-800">
         <div className="tw-container">
-          <div className="tw-flex tw-items-center tw-justify-between">
+          <div className="tw-flex tw-items-center tw-flex-wrap tw-gap-5 tw-justify-between">
             <div className="">
               {i18nT('FOOTER.TITLE')}
             </div>

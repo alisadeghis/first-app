@@ -14,10 +14,10 @@ export const AuthLayout = ({ children }: PropsWithChildren) => {
   return (
     <div>
       <div className="tw-flex tw-w-9/12 tw-min-h-[400px] tw-mx-auto tw-bg-surface-50 tw-shadow-2xl tw-mt-20 tw-rounded-lg tw-overflow-hidden">
-        <div className="tw-w-6/12 tw-bg-surface-50">
+        <div className="tw-w-full tw-bg-surface-50">
           <div className="tw-w-full tw-h-full tw-p-5">{children}</div>
         </div>
-        <div className="tw-w-6/12 tw-bg-surface-100">
+        <div className="tw-w-full tw-hidden md:tw-block tw-bg-surface-100">
           <div className="tw-w-10/12 tw-mx-auto tw-h-full tw-px-7 tw-py-10">
             <div className="tw-flex tw-justify-end">
               <img
