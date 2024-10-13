@@ -56,7 +56,7 @@ export const DefaultLayout = ({ children }: PropsWithChildren) => {
                 style={{
                   width: "250px",
                 }}
-                options={cities.map((i) => i.city)}
+                options={cities.map((i) => i[lang.value])}
                 value={city.value}
                 onChange={(_, v) => city.set(v ?? "")}
                 renderInput={(params) => (
@@ -87,7 +87,7 @@ export const DefaultLayout = ({ children }: PropsWithChildren) => {
               >
                 <div className="tw-flex tw-space-y-3 tw-flex-col tw-min-w-[200px] tw-p-3">
                   <div className="">
-                    <h6>Mode</h6>
+                    <h6>{i18nT('MODE')}</h6>
                     <ToggleButtonGroup
                       value={mode.value}
                       fullWidth
@@ -98,20 +98,20 @@ export const DefaultLayout = ({ children }: PropsWithChildren) => {
                         value={"light"}
                       >
                         <WbSunny />
-                        Light
+                        {i18nT('LIGHT')}
                       </ToggleButton>
                       <ToggleButton
                         onClick={() => mode.set("dark")}
                         value={"dark"}
                       >
                         <DarkMode />
-                        Dark
+                        {i18nT('DARK')}
                       </ToggleButton>
                     </ToggleButtonGroup>
                   </div>
                   <Divider />
                   <div className="">
-                    <h6>Lang</h6>
+                    <h6>{i18nT('LANG')}</h6>
                     <ToggleButtonGroup
                       value={lang.value}
                       fullWidth
@@ -127,7 +127,7 @@ export const DefaultLayout = ({ children }: PropsWithChildren) => {
                   </div>
                   <Divider />
                   <Button onClick={logout} color="error">
-                    LogOut
+                    {i18nT('LOGOUT')}
                   </Button>
                 </div>
               </Menu>
@@ -142,13 +142,12 @@ export const DefaultLayout = ({ children }: PropsWithChildren) => {
         <div className="tw-container">
           <div className="tw-flex tw-items-center tw-justify-between">
             <div className="">
-              All rights of this site are reserved for Nadin Sadr Aria
-              Engineering Company.
+              {i18nT('FOOTER.TITLE')}
             </div>
             <div className="tw-flex tw-items-center tw-gap-x-3">
               <div className="tw-flex tw-items-center tw-gap-x-1">
                 <Mail />
-                contact us : info@nadin.ir
+                {i18nT('FOOTER.CONTACT')} : info@nadin.ir
               </div>
               <div className="tw-flex tw-items-center tw-gap-x-1">
                 <DateRange />

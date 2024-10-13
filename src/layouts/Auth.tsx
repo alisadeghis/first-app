@@ -5,11 +5,12 @@ import moon_cloud_rain from "@/assets/img/moon-cloud-rain.png";
 import moon_cloud_wind from "@/assets/img/moon-cloud-wind.png";
 import sun_cloud_rain from "@/assets/img/sun-cloud-rain.png";
 import { useSetting } from "@/provider/SettingProvider";
+import { useI18n } from "@/composables";
 
 export const AuthLayout = ({ children }: PropsWithChildren) => {
   const { lang } = useSetting();
   const options = ["fa", "en"];
-
+  const { i18nT } = useI18n()
   return (
     <div>
       <div className="tw-flex tw-w-9/12 tw-min-h-[400px] tw-mx-auto tw-bg-surface-50 tw-shadow-2xl tw-mt-20 tw-rounded-lg tw-overflow-hidden">
@@ -57,7 +58,7 @@ export const AuthLayout = ({ children }: PropsWithChildren) => {
           renderInput={(params) => (
             <TextField
               {...params}
-              label="Lang"
+              label={i18nT('LANG')}
               variant="standard"
               style={{ width: "200px" }}
             />

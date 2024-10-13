@@ -1,55 +1,53 @@
+import { format } from "date-fns";
+import { format as formatJalali } from "date-fns-jalali";
+import { enUS } from "date-fns/locale";
+import { faIR } from "date-fns-jalali/locale";
+import i18next from "i18next";
+
+function getCurrentLanguage(): string {
+  return i18next.language ?? "en"; 
+}
+
 export function getDayOfWeek(dateString?: string): string {
   if (!dateString) return "";
-  const daysOfWeek: string[] = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-
   const date = new Date(dateString);
-  const dayOfWeek = date.getDay(); // returns 0 for Sunday, 1 for Monday, etc.
 
-  return daysOfWeek[dayOfWeek];
+  if (getCurrentLanguage() === "fa") {
+    return formatJalali(date, "EEEE", { locale: faIR });
+  } else {
+    return format(date, "EEEE", { locale: enUS });
+  }
 }
 
 export function formatDate(dateString?: string): string {
   if (!dateString) return "";
   const date = new Date(dateString);
-  const day = date.getDate();
-  const monthNames: string[] = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-  const month = monthNames[date.getMonth()];
-  const year = date.getFullYear();
 
-  return `${day} ${month}, ${year}`;
+  if (getCurrentLanguage() === "fa") {
+    return formatJalali(date, "d MMMM yyyy", { locale: faIR });
+  } else {
+    return format(date, "d MMM, yyyy", { locale: enUS });
+  }
 }
 
 export function formatTime(dateString?: string): string {
   if (!dateString) return "";
   const date = new Date(dateString);
-  let hours = date.getHours();
-  const minutes = date.getMinutes().toString().padStart(2, "0");
-  const ampm = hours >= 12 ? "PM" : "AM";
 
-  // تبدیل ساعت به فرمت 12 ساعته
-  hours = hours % 12;
-  hours = hours ? hours : 12; // اگر 0 بود، باید 12 نمایش داده شود
+  if (getCurrentLanguage() === "fa") {
+    return formatJalali(date, "HH:mm", { locale: faIR });
+  } else {
+    return format(date, "h:mm a", { locale: enUS });
+  }
+}
 
-  return `${hours}:${minutes} ${ampm}`;
+export function formatDateTime(dateString?: string): string {
+  if (!dateString) return "";
+  const date = new Date(dateString);
+
+  if (getCurrentLanguage() === "fa") {
+    return formatJalali(date, "EEEE، d MMMM yyyy ساعت HH:mm", { locale: faIR });
+  } else {
+    return format(date, "EEEE, d MMM yyyy, h:mm a", { locale: enUS });
+  }
 }

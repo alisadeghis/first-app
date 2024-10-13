@@ -8,6 +8,7 @@ import { TemperatureChart } from "./components/chart";
 import { Forecastday } from "./types";
 import { CircularProgress } from "@mui/material";
 import { WeatherCard } from "./components/card";
+import { useI18n } from "@/composables";
 
 export const HomePage = () => {
   const {
@@ -17,7 +18,7 @@ export const HomePage = () => {
     loading: dailyWeatherLoading,
   } = useApi(homeServices.getDailyWeather);
   const { city } = useSetting();
-
+  const { i18nT } = useI18n()
   const formatedData = (data?: Forecastday[]) => {
     if (!data) return [];
     return data.map((i) => ({
@@ -38,7 +39,7 @@ export const HomePage = () => {
         </div>
       ) : dailyWeatherError ? (
         <div className="tw-flex tw-text-surface-800 tw-items-center tw-justify-center tw-min-h-[300px]">
-          Not found Men :)
+          {i18nT('NOT_FOUND')}
         </div>
       ) : (
         <>
@@ -69,8 +70,8 @@ export const HomePage = () => {
                         {dailyWeather?.current.temp_c}&deg;C
                       </h4>
                       <div className="tw-flex tw-items-center tw-gap-x-2 tw-text-xs">
-                        <span>High: {dailyWeather?.current.heatindex_c}</span>
-                        <span>Low: {dailyWeather?.current.dewpoint_c}</span>
+                        <span>{i18nT('HIGH')}: {dailyWeather?.current.heatindex_c}</span>
+                        <span>{i18nT('LOW')}: {dailyWeather?.current.dewpoint_c}</span>
                       </div>
                     </div>
                   </div>
@@ -86,7 +87,7 @@ export const HomePage = () => {
                         {dailyWeather?.current.condition.text}
                       </h4>
                       <span className="tw-text-sm tw-mt-1 tw-block">
-                        Feels Like {dailyWeather?.current.feelslike_c}
+                        {i18nT('LIKED')} {dailyWeather?.current.feelslike_c}
                       </span>
                     </div>
                   </div>
@@ -96,7 +97,7 @@ export const HomePage = () => {
             <div className="tw-w-6/12 tw-p-5">
               <div className="tw-bg-surface-100 tw-h-full tw-shadow-2xl tw-text-surface-700 tw-p-5 tw-rounded-3xl tw-min-h-48">
                 <h4 className="tw-mb-3 tw-font-bold tw-text-lg">
-                  Average Monthly Temprature
+                  {i18nT('AVRAGE_WEEK')}
                 </h4>
                 <TemperatureChart
                   data={formatedData(dailyWeather?.forecast.forecastday)}
